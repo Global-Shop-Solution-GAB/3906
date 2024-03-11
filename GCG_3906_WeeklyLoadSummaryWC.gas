@@ -1,0 +1,623 @@
+Program.Sub.ScreenSU.Start
+gui.SS_Form1..create
+gui.SS_Form1..caption("WC Weekly Load Summary Report")
+gui.SS_Form1..size(4110,6690)
+gui.SS_Form1..position(0,0)
+gui.SS_Form1..event(unload,Unload)
+gui.SS_Form1..alwaysontop(False)
+gui.SS_Form1..fontname("Arial")
+gui.SS_Form1..fontsize(8)
+gui.SS_Form1..forecolor(0)
+gui.SS_Form1..fontstyle(,,,,)
+gui.SS_Form1..BackColor(-2147483633)
+gui.SS_Form1..controlbox(True)
+gui.SS_Form1..maxbutton(False)
+gui.SS_Form1..minbutton(False)
+gui.SS_Form1..mousepointer(0)
+gui.SS_Form1..moveable(True)
+gui.SS_Form1..sizeable(False)
+gui.SS_Form1..ShowInTaskBar(True)
+gui.SS_Form1..titlebar(True)
+gui.SS_Form1.lbl_dtpStart.create(label,"Start date",True,1800,200,1,100,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_dtpStart.defaultvalue("")
+gui.SS_Form1.lbl_dtpStart.controlgroup(0)
+gui.SS_Form1.dtpStart.create(datepicker)
+gui.SS_Form1.dtpStart.visible(True)
+gui.SS_Form1.dtpStart.size(1800,345)
+gui.SS_Form1.dtpStart.zorder(0)
+gui.SS_Form1.dtpStart.position(100,335)
+gui.SS_Form1.dtpStart.enabled(True)
+gui.SS_Form1.dtpStart.checkbox(False)
+gui.SS_Form1.dtpStart.defaultvalue("")
+gui.SS_Form1.dtpStart.controlgroup(0)
+gui.SS_Form1.lbl_dtpEnd.create(label,"End date.",True,1800,200,1,1985,135,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_dtpEnd.defaultvalue("")
+gui.SS_Form1.lbl_dtpEnd.controlgroup(0)
+gui.SS_Form1.dtpEnd.create(datepicker)
+gui.SS_Form1.dtpEnd.visible(True)
+gui.SS_Form1.dtpEnd.size(1800,345)
+gui.SS_Form1.dtpEnd.zorder(0)
+gui.SS_Form1.dtpEnd.position(1985,335)
+gui.SS_Form1.dtpEnd.enabled(True)
+gui.SS_Form1.dtpEnd.checkbox(False)
+gui.SS_Form1.dtpEnd.defaultvalue("")
+gui.SS_Form1.dtpEnd.controlgroup(0)
+gui.SS_Form1.lbl_ddlWC.create(label,"Workcenter",True,1800,200,1,100,850,True,0,Arial,8,-2147483633,0)
+gui.SS_Form1.lbl_ddlWC.defaultvalue("")
+gui.SS_Form1.lbl_ddlWC.controlgroup(0)
+gui.SS_Form1.ddlWC.create(dropdownlist)
+gui.SS_Form1.ddlWC.visible(True)
+gui.SS_Form1.ddlWC.size(2325,330)
+gui.SS_Form1.ddlWC.zorder(0)
+gui.SS_Form1.ddlWC.position(100,1050)
+gui.SS_Form1.ddlWC.enabled(True)
+gui.SS_Form1.ddlWC.fontname("Arial")
+gui.SS_Form1.ddlWC.fontsize(8)
+gui.SS_Form1.ddlWC.defaultvalue("")
+gui.SS_Form1.ddlWC.controlgroup(0)
+gui.SS_Form1.lvwWC.create(listview)
+gui.SS_Form1.lvwWC.view(3)
+gui.SS_Form1.lvwWC.addlistviewcolumn("Workcenter",3225,0)
+gui.SS_Form1.lvwWC.visible(True)
+gui.SS_Form1.lvwWC.size(3685,3425)
+gui.SS_Form1.lvwWC.zorder(0)
+gui.SS_Form1.lvwWC.position(4300,1500)
+gui.SS_Form1.lvwWC.enabled(True)
+gui.SS_Form1.lvwWC.fontname("Arial")
+gui.SS_Form1.lvwWC.fontsize(8)
+gui.SS_Form1.cmd_lvwWCAdd.create(button)
+gui.SS_Form1.cmd_lvwWCAdd.caption("Add")
+gui.SS_Form1.cmd_lvwWCAdd.visible(True)
+gui.SS_Form1.cmd_lvwWCAdd.size(1000,330)
+gui.SS_Form1.cmd_lvwWCAdd.zorder(0)
+gui.SS_Form1.cmd_lvwWCAdd.position(2760,1030)
+gui.SS_Form1.cmd_lvwWCAdd.enabled(True)
+gui.SS_Form1.cmd_lvwWCAdd.fontname("Arial")
+gui.SS_Form1.cmd_lvwWCAdd.fontsize(8)
+gui.SS_Form1.cmd_lvwWCAdd.event(click,cmd_lvwwcadd_click)
+gui.SS_Form1.cmd_lvwWCAdd.SetInternationalID(7600)
+gui.SS_Form1.cmd_lvwWCAdd.defaultvalue("")
+gui.SS_Form1.cmd_lvwWCAdd.controlgroup(0)
+gui.SS_Form1.cmd_lvwWCDelete.create(button)
+gui.SS_Form1.cmd_lvwWCDelete.caption("Remove")
+gui.SS_Form1.cmd_lvwWCDelete.visible(True)
+gui.SS_Form1.cmd_lvwWCDelete.size(1000,330)
+gui.SS_Form1.cmd_lvwWCDelete.zorder(0)
+gui.SS_Form1.cmd_lvwWCDelete.position(100,5050)
+gui.SS_Form1.cmd_lvwWCDelete.enabled(True)
+gui.SS_Form1.cmd_lvwWCDelete.fontname("Arial")
+gui.SS_Form1.cmd_lvwWCDelete.fontsize(8)
+gui.SS_Form1.cmd_lvwWCDelete.event(click,cmd_lvwwcremove_click)
+gui.SS_Form1.cmd_lvwWCDelete.SetInternationalID(171500)
+gui.SS_Form1.cmd_lvwWCDelete.defaultvalue("")
+gui.SS_Form1.cmd_lvwWCDelete.controlgroup(0)
+gui.SS_Form1.cmd_lvwWCClear.create(button)
+gui.SS_Form1.cmd_lvwWCClear.caption("Clear")
+gui.SS_Form1.cmd_lvwWCClear.visible(True)
+gui.SS_Form1.cmd_lvwWCClear.size(1000,330)
+gui.SS_Form1.cmd_lvwWCClear.zorder(0)
+gui.SS_Form1.cmd_lvwWCClear.position(1185,5050)
+gui.SS_Form1.cmd_lvwWCClear.enabled(True)
+gui.SS_Form1.cmd_lvwWCClear.fontname("Arial")
+gui.SS_Form1.cmd_lvwWCClear.fontsize(8)
+gui.SS_Form1.cmd_lvwWCClear.event(click,cmd_lvwwcclear_click)
+gui.SS_Form1.cmd_lvwWCClear.SetInternationalID(106700)
+gui.SS_Form1.cmd_lvwWCClear.defaultvalue("")
+gui.SS_Form1.cmd_lvwWCClear.controlgroup(0)
+gui.SS_Form1.cmdprint.create(button)
+gui.SS_Form1.cmdprint.caption("Print")
+gui.SS_Form1.cmdprint.visible(True)
+gui.SS_Form1.cmdprint.size(1000,360)
+gui.SS_Form1.cmdprint.zorder(0)
+gui.SS_Form1.cmdprint.position(100,5670)
+gui.SS_Form1.cmdprint.enabled(True)
+gui.SS_Form1.cmdprint.fontname("Arial")
+gui.SS_Form1.cmdprint.fontsize(8)
+gui.SS_Form1.cmdprint.event(click,cmdprint_click)
+gui.SS_Form1.cmdprint.defaultvalue("")
+gui.SS_Form1.cmdprint.controlgroup(0)
+gui.SS_Form1.lstWC.create(listbox)
+gui.SS_Form1.lstWC.visible(True)
+gui.SS_Form1.lstWC.size(3675,3420)
+gui.SS_Form1.lstWC.zorder(0)
+gui.SS_Form1.lstWC.position(100,1550)
+gui.SS_Form1.lstWC.enabled(True)
+gui.SS_Form1.lstWC.fontname("Arial")
+gui.SS_Form1.lstWC.fontsize(8)
+
+
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+
+Variable.Global.iKey.Declare(Long,0)
+Variable.Global.sList.Declare(String)
+Variable.UDT.uWC.Define("Workcenter",String)
+Variable.uGlobal.uWC.Declare("uWC")
+Variable.UDT.uWeeks.Define("Week",String)
+Variable.uGlobal.uWeeks.Declare("uWeeks")
+Variable.UDT.uHrs.Define("Date_End",String,Date_End)
+Variable.UDT.uHrs.Define("Date_Start",String,Date_Start)
+Variable.UDT.uHrs.Define("Total_Cap",Float,Total_Capacity)
+Variable.UDT.uHrs.Define("Total_Sch",Float,Total_Schedule)
+Variable.UDT.uHrs.Define("WC",String,WorkCenter)
+Variable.UDT.uHrs.Define("Terminal",String,Terminal)
+Variable.UDT.uHrs.Define("Week_No",Long,Week_No)
+Variable.uGlobal.uHrs.Declare("uHrs")
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+F.Intrinsic.Control.SetErrorHandler("Main_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.bExists.Declare(Boolean)
+
+
+V.uGlobal.uWC.Redim(-1,-1)
+
+F.Intrinsic.Control.If(V.Caller.Hook,=,38300)
+	V.Passed.Main-cmdGAB-0.Set("Workcenter Weekly Load Summary")
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.If(V.Caller.Hook,=,38301)
+	F.ODBC.Connection!con.OpenConnection(V.Ambient.PDSN,V.Ambient.PUser,V.Ambient.PPass)
+	Function.ODBC.connection!con.TableExists("GCG_3906_WC_Weekly_Load",V.Local.bExists)
+	Function.Intrinsic.Control.If(V.Local.bExists,=,False)
+		F.Intrinsic.UI.Msgbox("GCG_3906_WC_Weekly_Load table not found.","ERROR!",64)
+		F.Intrinsic.Control.CallSub(Unload)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.CallSub(Popwc)
+	Gui.SS_Form1..Show
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Label("Main_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Main.End
+
+Program.Sub.Unload.Start
+F.Intrinsic.UI.CloseWaitDialog
+F.ODBC.Connection!con.Close
+F.Intrinsic.Control.End
+
+Program.Sub.Unload.End
+
+Program.Sub.PopWC.Start
+F.Intrinsic.Control.SetErrorHandler("PopWC_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSQL.Declare(String)
+
+V.Local.sSQL.Set("select Machine from V_Workcenters Order by Machine")
+F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,True)
+	F.Intrinsic.UI.Msgbox("No workcenters found. Please contact Global Shop.")
+	F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.Else
+	F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+		Gui.SS_Form1.ddlWC.AddItem(V.ODBC.con!rst.FieldValTrim!Machine)
+		F.ODBC.con!rst.MoveNext
+	F.Intrinsic.Control.Loop
+F.Intrinsic.Control.EndIf
+F.ODBC.con!rst.Close
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("PopWC_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.PopWC.End
+
+program.sub.cmd_lvwwcadd_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwwcadd_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.bFound.Declare(Boolean,False)
+V.Local.i.Declare(Long)
+V.Local.iUB.Declare(Long,0)
+
+'exit if no WC selected
+F.Intrinsic.Control.If(V.Screen.SS_Form1!ddlWC.Text,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'avoid duplicates- search in array
+F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uWC.LBound,V.uGlobal.uWC.UBound,1)
+	F.Intrinsic.Control.If(V.Screen.SS_Form1!ddlWC.Text,=,V.uGlobal.uWC(v.Local.i))
+		V.Local.bFound.Set(True)
+		F.Intrinsic.Control.ExitFor(V.Local.i)
+	F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Next(V.Local.i)
+
+'If email not found in list, add it to memory array
+F.Intrinsic.Control.If(V.Local.bFound,=,False)
+	F.Intrinsic.Control.If(V.uGlobal.uWC.UBound,=,-1)
+		V.uGlobal.uWC.Redim(0,0)
+	F.Intrinsic.Control.Else
+		V.Local.iUB.Set(V.uGlobal.uWC.UBound)
+		F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+		V.uGlobal.uWC.RedimPreserve(V.uGlobal.uWC.LBound,V.Local.iUB)
+	F.Intrinsic.Control.EndIf
+	V.uGlobal.uWC(V.Local.iUB)!Workcenter.Set(V.Screen.SS_Form1!ddlWC.Text)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.CallSub(Fill_list)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwwcadd_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_lvwwcadd_click.end
+
+program.sub.cmd_lvwwcremove_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwwcdelete_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sWC.Declare(String)
+V.Local.iOrd.Declare(Long)
+V.Local.i.Declare(Long)
+V.Local.iStart.Declare(Long)
+V.Local.iEnd.Declare(Long)
+V.Local.iTemp.Declare(Long)
+
+'Exit if no WC selected in list
+F.Intrinsic.Control.If(V.Screen.SS_Form1!lstWC.Text,=,"")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'get index for workcenter removal
+V.Local.iOrd.Set(V.Screen.SS_Form1!lstWC.ListIndex)
+V.Local.sWC.Set(V.Screen.SS_Form1!lstWC.Text(v.Local.iOrd))
+F.Intrinsic.Variable.UDTMultiFlag(V.uGlobal.uWC!Workcenter,V.Local.sWC)
+F.Intrinsic.Variable.UDTDeleteFlagged(V.uGlobal.uWC)
+
+F.Intrinsic.Control.CallSub(Fill_list)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwwcdelete_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_lvwwcremove_click.end
+
+program.sub.cmd_lvwwcclear_click.start
+F.Intrinsic.Control.SetErrorHandler("cmd_lvwwcclear_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+
+'clear box
+V.uGlobal.uWC.Redim(-1,-1)
+Gui.SS_Form1.lstWC.ClearItems
+Gui.SS_Form1.ddlWC.Text("")
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmd_lvwwcclear_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmd_lvwwcclear_click.end
+
+program.sub.cmdprint_click.start
+F.Intrinsic.Control.SetErrorHandler("cmdprint_click_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.sSQL.Declare(String)
+V.Local.i.Declare(Long)
+V.Local.sStartdate.Declare(String)
+V.Local.sEnddate.Declare(String)
+V.Local.bCheck.Declare(Boolean,False)
+V.Local.sStartTempDate.Declare(String)
+V.Local.sEndTempDate.Declare(String)
+V.Local.iUB.Declare(Long,-1)
+V.Local.sWeekRange.Declare(String)
+V.uGlobal.uWeeks.Redim(-1,-1)
+V.Local.iA.Declare(Long)
+'Total hours scheduled for WC
+V.Local.fWCTotHrsSched.Declare(Float)
+'Total Workcenter Capacity
+V.Local.fTotWCCap.Declare(Float)
+'tempdate
+V.Local.dTemp.Declare(Date)
+'long that stores day of week
+V.Local.iDay.Declare(Long)
+V.Local.iWeek.Declare(Long)
+
+
+
+'make sure workcenter(s) are selected
+F.Intrinsic.Control.If(V.uGlobal.uWC.UBound,=,-1)
+	F.Intrinsic.UI.Msgbox("Please add a Workcenter Selection.")
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+V.uGlobal.uHrs.Redim(-1,-1)
+V.Local.iWeek.Set(1)
+
+'format date fields
+F.Intrinsic.String.Format(V.Screen.SS_Form1!dtpStart.Value,"YYYY-MM-DD",V.Local.sStartdate)
+F.Intrinsic.String.Format(V.Screen.SS_Form1!dtpEnd.Value,"YYYY-MM-DD",V.Local.sEnddate)
+V.Local.sStartTempDate.Set(V.Local.sStartdate)
+'F.Intrinsic.Control.If(V.Local.sStartdate,>,V.Local.sEnddate)
+F.Intrinsic.Control.If(V.Screen.SS_Form1!dtpStart.Value,>,V.Screen.SS_Form1!dtpEnd.Value)
+	F.Intrinsic.UI.Msgbox("Start date can not be after end date.","ERROR!",64)
+	Gui.SS_Form1..Enabled(True)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+'hide the screen, and display wait dialog
+Gui.SS_Form1..Visible(False)
+F.Intrinsic.UI.InvokeWaitDialog("Processing...")
+
+
+'get the week ranges from the date range
+'week range will be Monday Through Friday only
+'if they choose a mid week date we just finish out the week
+F.Intrinsic.Control.DoUntil(V.Local.bCheck,=,True)
+	F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+	F.Intrinsic.Control.If(V.Local.iUB,=,0)
+		V.uGlobal.uWeeks.Redim(0,0)
+	F.Intrinsic.Control.Else
+		V.uGlobal.uWeeks.RedimPreserve(V.uGlobal.uWeeks.LBound,V.Local.iUB)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Format(V.Local.sStartTempDate,"YYYY-MM-DD",V.Local.sStartTempDate)
+	F.Intrinsic.Date.EndOfWeek(V.Local.sStartTempDate,V.Local.sEndTempDate)
+	F.Intrinsic.String.Format(V.Local.sEndTempDate,"YYYY-MM-DD",V.Local.sEndTempDate)
+	'if "end date" falls in the week middle of the week.
+	F.Intrinsic.Control.If(V.Local.sEndTempDate,>=,V.Local.sEnddate)
+		V.Local.sEndTempDate.Set(V.Local.sEnddate)
+		V.Local.bCheck.Set(True)
+	F.Intrinsic.Control.EndIf
+	'concat week range and add to UDT
+	F.Intrinsic.String.Concat(V.Local.sStartTempDate,":",V.Local.sEndTempdate,V.Local.sWeekRange)
+	V.uGlobal.uWeeks(v.Local.iUB)!Week.Set(V.Local.sWeekRange)
+	F.Intrinsic.Date.DateAddWorkdays(V.Local.sEndTempDate,1,1,V.Local.sStartTempDate)
+F.Intrinsic.Control.Loop
+
+V.local.iUB.Set(0)
+
+'loop through each week for each work center to gather data
+F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uWeeks.LBound,V.uGlobal.uWeeks.UBound,1)
+	F.Intrinsic.String.Split(V.uGlobal.uWeeks(v.Local.i)!Week,":",V.Local.sWeekRange)
+	F.Intrinsic.Control.For(V.Local.iA,V.uGlobal.uWC.LBound,V.uGlobal.uWC.UBound,1)
+		F.Intrinsic.String.Build("Select * from APSV3_UBDetail where BDate between '{0}' and '{1}' and RST = '{2}'",V.Local.sWeekRange(0),V.Local.sWeekRange(1),V.uGlobal.uWC(v.Local.iA)!Workcenter,V.Local.sSQL)
+		F.ODBC.Connection!con.OpenLocalRecordsetRO("rst",V.Local.sSQL)
+		F.Intrinsic.Control.If(V.ODBC.con!rst.EOF,=,False)
+			'getting total hours scheduled for the workcenter
+			F.Intrinsic.Control.DoUntil(V.ODBC.con!rst.EOF,=,True)
+				F.Intrinsic.Math.Add(V.Local.fWCTotHrsSched,V.ODBC.con!rst.FieldValFloat!RBT,V.Local.fWCTotHrsSched)
+				F.ODBC.con!rst.MoveNext
+			F.Intrinsic.Control.Loop
+		F.Intrinsic.Control.EndIf
+		F.ODBC.con!rst.Close
+		'now we need to total capacity for each workcenter
+		'first check for excpection calendars in ActPerDef
+		'if excpetion exists for that day we are using that amount, else we are using the standard cap
+		'else we are using APSV3_DefperDef
+		'RESNAME is Workcenter
+		'WKDAYis each day of week that the total is stored
+		'TOTCAP
+		'PDATE =Date period
+		'have to loop through for each workday to get total capacity
+'		starting with our sWeekRange(0) value and date adding 1 till we get to the sWeekRange(1) value?
+		V.Local.dTemp.Set(V.Local.sWeekRange(0))
+'		F.Intrinsic.Debug.WatchVariable(V.Local.dTemp)
+		F.Intrinsic.Control.DoUntil(V.Local.dTemp.FormatYYYY-MM-DD,>,V.Local.sWeekRange(1))
+			'alright so now we hvae to determine the day of week
+			F.Intrinsic.Date.Weekday(V.Local.dTemp,V.Local.iDay)
+			'now we have to first look in our excpetion calendar table APSV3_ActPerDef
+			'build our string keeping the workcenter we are on uWC(v.local.iA)!Workcenter(RESNAME), Day of week(WKDAY)
+			'seems to only have one week within the
+			F.Intrinsic.String.Build("Select TOTCAP From APSV3_ACTPERDEF Where RESNAME = '{0}' AND WKDAY = '{1}' And PDATE = '{2}'",V.uGlobal.uWC(v.Local.iA)!Workcenter,V.Local.iDay,V.local.dTemp.PervasiveDate,V.Local.sSQL)
+			F.ODBC.connection!con.OpenLocalRecordsetRO("rstExc",V.Local.sSQL)
+			F.Intrinsic.Control.If(V.ODBC.con!rstExc.EOF,=,False)
+			'not sure how this table is set up but we are going to loop through the recordset may be only one records or multiples?
+				F.Intrinsic.Control.DoUntil(V.ODBC.con!rstExc.EOF,=,True)
+					F.Intrinsic.Math.Add(V.Local.fTotWCCap,V.ODBC.con!rstExc.FieldValFloat!TOTCAP,V.Local.fTotWCCap)
+					F.ODBC.con!rstExc.MoveNext
+				'loop for EOF for APSV3_ActPerDef (Exception Day)
+				F.Intrinsic.Control.Loop
+'				F.ODBC.con!rstExc.Close
+			F.Intrinsic.Control.Else
+				'we know that exceptions dont exist for that period go through standard table this will be only 1 through 7, no pDate as this is a standard for workcenters and its standard for each day.
+				F.Intrinsic.String.Build("Select TOTCAP From APSV3_DefPerDef Where RESNAME = '{0}' AND WKDAY = '{1}'",V.uGlobal.uWC(v.Local.iA)!Workcenter,V.Local.iDay,V.Local.dTemp.PervasiveDate,V.Local.sSQL)
+				F.ODBC.connection!con.OpenLocalRecordsetRO("rstStd",V.Local.sSQL)
+				F.Intrinsic.Control.If(V.ODBC.con!rststd.EOF,=,False)
+					F.Intrinsic.Control.DoUntil(V.ODBC.con!rstStd.EOF,=,True)
+						F.Intrinsic.Math.Add(V.Local.fTotWCCap,V.ODBC.con!rstStd.FieldValFloat!TOTCAP,V.Local.fTotWCCap)
+						F.ODBC.con!rstStd.MoveNext
+					F.Intrinsic.Control.Loop
+				F.Intrinsic.Control.EndIf
+'				F.ODBC.con!rstStd.close
+			'end if for exception or standard table use		
+			F.Intrinsic.Control.EndIf
+		'add one to our dTemp, and return to dTemp
+		F.Intrinsic.Date.DateAdd("D",1,V.Local.dTemp,V.Local.dTemp)
+		F.ODBC.con!rstStd.Close
+		F.ODBC.con!rstExc.Close
+		'loop for day of week incrementer
+		F.Intrinsic.Control.Loop
+		'now since we exited here we should have our totals values for the week let store all information into uHrs UDT		f.Intrinsic.Control.If(v.Local.
+		F.Intrinsic.Control.If(V.uGlobal.uHrs.UBound,=,-1)
+			V.uGlobal.uHrs.Redim(0,0)
+		F.Intrinsic.Control.Else
+			V.Local.iUB.Set(V.uGlobal.uHrs.UBound)
+			F.Intrinsic.Math.Add(V.Local.iUB,1,V.Local.iUB)
+			V.uGlobal.uHrs.RedimPreserve(V.uGlobal.uHrs.LBound,V.Local.iUB)
+		F.Intrinsic.Control.EndIf
+		V.uGlobal.uHrs(v.Local.iUB)!WC.Set(V.uGlobal.uWC(v.Local.iA)!Workcenter)
+		V.uGlobal.uHrs(v.Local.iUB)!Week_No.Set(V.Local.iWeek)
+		V.uGlobal.uHrs(v.Local.iUB)!Date_Start.Set(V.Local.sWeekRange(0))
+		V.uGlobal.uHrs(v.Local.iUB)!Date_End.Set(V.Local.sWeekRange(1))
+		V.uGlobal.uHrs(v.Local.iUB)!Total_Cap.Set(V.Local.fTotWCCap)
+		V.uGlobal.uHrs(v.Local.iUB)!Total_Sch.Set(V.Local.fWCTotHrsSched)
+		'clear out the values for the next wc
+		V.Local.fTotWCCap.Set(0)
+		V.Local.fWCTotHrsSched.Set(0)
+	F.Intrinsic.Control.Next(V.Local.iA)
+	'want to keep the week number the same for the set of workcenters.
+	F.Intrinsic.Math.Add(V.Local.iWeek,1,V.Local.iWeek)
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.CallSub(Table_save)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("cmdprint_click_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+program.sub.cmdprint_click.end
+
+Program.Sub.Fill_List.Start
+F.Intrinsic.Control.SetErrorHandler("Fill_List_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.i.Declare(Long)
+
+Gui.SS_Form1.lstWC.ClearItems
+
+F.Intrinsic.Variable.UDTMultiQuickSort(V.uGlobal.uWC!Workcenter,0)
+
+'Fill listbox from UDT
+F.Intrinsic.Control.For(V.Local.i,V.uGlobal.uWC.LBound,V.uGlobal.uWC.UBound,1)
+	Gui.SS_Form1.lstWC.AddItem(V.uGlobal.uWC(v.Local.i))
+F.Intrinsic.Control.Next(V.Local.i)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Fill_List_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Fill_List.End
+
+Program.Sub.Table_Save.Start
+F.Intrinsic.Control.SetErrorHandler("Table_Save_Err")
+F.Intrinsic.Control.ClearErrors
+'sub that will save our UDT information to our custom table.
+'that will be used for the report
+'GCG_WC_Weekly_Load
+
+
+
+V.Local.sError.Declare(String)
+V.Local.sQuery.Declare(String)
+
+'delete from our table the terminal number information
+F.Intrinsic.String.Concat("Delete From GCG_3906_WC_WklyLoad Where Terminal = '",V.caller.Terminal,"'",V.Local.sQuery)
+F.ODBC.connection!con.Execute(V.Local.sQuery)
+
+'set member value to our UDt
+'Terminal
+F.Intrinsic.Variable.UDTSetMemberValue(V.uglobal.uHrs!Terminal,V.Caller.Terminal)
+
+'save our udt to table
+F.ODBC.connectioN!con.OpenLocalRecordsetRW("rst","Select * from GCG_3906_WC_WklyLoad")
+Function.Intrinsic.Variable.SaveUDTToRecordset("con","rst","v.uglobal.uHrs")
+
+'call our print report sub
+F.Intrinsic.Control.CallSub(Print_rpt)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Table_Save_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Table_Save.End
+
+Program.Sub.Print_RPT.Start
+F.Intrinsic.Control.SetErrorHandler("Print_RPT_Err")
+F.Intrinsic.Control.ClearErrors
+
+V.Local.sError.Declare(String)
+V.Local.iRptID.Declare(Long)
+V.Local.sValue.Declare(String)
+V.local.sParam.Declare(String)
+
+Function.Global.BI.GetIDFromName("GCG_3906_WC_WkLoad_Summary.rpt",V.Local.iRptID)
+F.Intrinsic.Control.If(V.Local.iRptID,<,0)
+	F.Intrinsic.UI.Msgbox("Active Report ID for WC Weekly Load Summary report not found.","ERROR!",64)
+	F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.String.Split("Terminal*!*User","*!*",V.Local.sParam)
+F.Intrinsic.String.Concat(V.Caller.Terminal,"*!*",V.Caller.User,V.Local.svalue)
+F.Intrinsic.String.Split(V.Local.sValue,"*!*",V.Local.sValue)
+
+Function.Global.BI.PrintReport(V.Local.iRptID,0,V.Local.sParam,V.Local.sValue,"",False)
+
+F.Intrinsic.Control.CallSub(Unload)
+
+F.Intrinsic.Control.ExitSub
+
+F.Intrinsic.Control.Label("Print_RPT_Err")
+F.Intrinsic.Control.If(V.Ambient.ErrorNumber,<>,0)
+	Function.Intrinsic.String.Concat("Project: GCG_3906_WeeklyLoadSummaryWC.gas",V.Ambient.Newline,V.Ambient.Newline,"Subroutine: ",V.Ambient.CurrentSubroutine,V.Ambient.NewLine,"Error Occurred ",V.Ambient.ErrorNumber," with description ",V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.CallSub(Unload)
+Function.Intrinsic.Control.EndIf
+
+
+Program.Sub.Print_RPT.End
+
+Program.Sub.Comments.Start
+${$0$}$WeeklyLoadSummaryWC$}$ERIC$}$9/12/2013
+${$3$}$0$}$$}$-1$}$-1$}$$}$1/1/1900$}$'quote 4914
+'similiar to APS report 590, except using the workcenter instead of the workgroup
+Program.Sub.Comments.End
+Program.Sub.ScreenSS.Start
+SS_Form1{{CAPTION::Workcenter Weekly Load Summary Report
+SS_Form1.CTRL{{NAME::dtpStart\\TYPE::6\\CAPTION::Enter the beginning date.\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::dtpEnd\\TYPE::6\\CAPTION::Enter the end date.\\GROUP::1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::ddlWC\\TYPE::4\\CAPTION::Workcenter\\RANGE::lvwWC\\GROUP::-1\\BROWSER::0\\SIZE::1
+SS_Form1.CTRL{{NAME::lvwWC\\TYPE::7\\GROUP::-1\\BROWSER::0\\SIZE::3
+SS_Form1.CTRL{{NAME::cmdprint\\TYPE::5\\CAPTION::Print\\GROUP::-1\\BROWSER::0\\SIZE::1
+
+Program.Sub.ScreenSS.End
+
